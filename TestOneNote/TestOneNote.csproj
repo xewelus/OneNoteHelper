@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+	<PropertyGroup>
+		<TargetFramework>net48</TargetFramework>
+		<OutputType>WinExe</OutputType>
+		<RootNamespace>TestOneNote</RootNamespace>
+		<AssemblyName>TestOneNote</AssemblyName>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+		<UseWPF>true</UseWPF>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
+	</PropertyGroup>
+	<ItemGroup>
+	  <None Remove="changes.txt" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Include="changes.txt">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\CSCommon\CommonWpf\CommonWpf.csproj" />
+	  <ProjectReference Include="..\CSCommon\Common\Common.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Reference Include="PresentationCore" />
+	  <Reference Include="PresentationFramework" />
+	  <Reference Include="System.Xaml" />
+	  <Reference Include="WindowsBase" />
+	</ItemGroup>
+</Project>

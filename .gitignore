@@ -1,0 +1,10 @@
+.vs/
+code/Backup/
+code/UpgradeLog.htm
+*/**/bin/Debug
+*/**/bin/Release
+*/**/obj/Debug
+*/**/obj/Release
+_ReSharper.Caches/
+*.suo
+/TestOneNote/obj/
