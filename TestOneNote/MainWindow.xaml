@@ -9,7 +9,10 @@
         Height="300" Width="400"
         WindowStartupLocation="CenterScreen"
         d:DataContext="{d:DesignInstance local:MainWindow, IsDesignTimeCreatable=True}">
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+		<StackPanel Orientation="Horizontal">
+			<Button Margin="3" Padding="8,0,8,0" Click="DumpClipboard_OnClick">Dump clipboard</Button>
+			<Button Margin="3" Padding="8,0,8,0" Click="OpenDumpFolder_OnClick">Open dump folder</Button>
+		</StackPanel>
+    </StackPanel>
 </Window>
