@@ -1,7 +1,7 @@
-<Application x:Class="TestOneNote.App"
+<Application x:Class="OneNoteHelper.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:TestOneNote"
+             xmlns:local="clr-namespace:OneNoteHelper"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
          

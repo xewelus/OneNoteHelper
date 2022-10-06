@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TestOneNote.Properties
+namespace OneNoteHelper.Properties
 {
 
 

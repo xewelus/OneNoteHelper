@@ -3,7 +3,7 @@
 		<TargetFramework>net48</TargetFramework>
 		<OutputType>WinExe</OutputType>
 		<RootNamespace>TestOneNote</RootNamespace>
-		<AssemblyName>TestOneNote</AssemblyName>
+		<AssemblyName>OneNoteHelper</AssemblyName>
 		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 		<UseWPF>true</UseWPF>
 	</PropertyGroup>

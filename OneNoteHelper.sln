@@ -6,7 +6,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "CSCommon\Common\C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonWpf", "CSCommon\CommonWpf\CommonWpf.csproj", "{AFA2D8DC-4B60-4928-9DFB-C2F27DA53C62}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestOneNote", "TestOneNote\TestOneNote.csproj", "{27960667-4B08-4C2F-80B4-FF45BB258C41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneNoteHelper", "OneNoteHelper\OneNoteHelper.csproj", "{27960667-4B08-4C2F-80B4-FF45BB258C41}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

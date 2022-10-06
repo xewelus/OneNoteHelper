@@ -1,7 +1,7 @@
 using System.Windows;
 using CommonWpf.Classes.UI;
 
-namespace TestOneNote
+namespace OneNoteHelper
 {
 	/// <summary>
 	/// Interaction logic for App.xaml

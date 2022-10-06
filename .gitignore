@@ -7,5 +7,5 @@ code/UpgradeLog.htm
 */**/obj/Release
 _ReSharper.Caches/
 *.suo
-/TestOneNote/obj/
-/TestOneNote/outputs/
+/OneNoteHelper/obj/
+/OneNoteHelper/outputs/

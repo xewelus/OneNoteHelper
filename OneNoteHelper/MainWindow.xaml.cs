@@ -7,12 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Markup;
 using Common;
 using CommonWpf;
 using CommonWpf.Classes.UI;
 
-namespace TestOneNote
+namespace OneNoteHelper
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
