@@ -5,16 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OneNoteHelper"
         mc:Ignorable="d"
-        Title="OneNote helper" 
+        Title="OneNote Helper" 
         Height="300" Width="400"
         WindowStartupLocation="CenterScreen"
         d:DataContext="{d:DesignInstance local:MainWindow, IsDesignTimeCreatable=True}">
     <StackPanel>
 		<StackPanel Orientation="Horizontal">
-			<Button Margin="3" Padding="8,0,8,0" Click="DumpClipboard_OnClick">Dump clipboard</Button>
-			<Button Margin="3" Padding="8,0,8,0" Click="OpenDumpFolder_OnClick">Open dump folder</Button>
-		</StackPanel>
-	    <StackPanel Orientation="Horizontal">
 			<Button Margin="3" Padding="8,0,8,0" Click="ProcessPages_OnClick">Process pages in clipboard</Button>
 		</StackPanel>
 	</StackPanel>
