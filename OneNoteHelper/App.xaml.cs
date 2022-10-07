@@ -1,5 +1,5 @@
 using System.Windows;
-using CommonWpf.Classes.UI;
+using CommonWpf.Classes;
 
 namespace OneNoteHelper
 {
@@ -10,7 +10,7 @@ namespace OneNoteHelper
 	{
 		public App()
 		{
-			ExceptionHandler.Init();
+			AppInitializer.Initialize();
 		}
 	}
 }
