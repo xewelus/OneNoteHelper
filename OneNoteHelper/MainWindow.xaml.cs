@@ -1,12 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Data;
 using Common;
 using CommonWpf;
 using CommonWpf.Classes.UI;
@@ -22,6 +19,9 @@ namespace OneNoteHelper
 		public MainWindow()
 		{
 			this.InitializeComponent();
+
+			this.ListView.Visibility = Visibility.Hidden;
+			this.ListView.ItemsSource = null;
 		}
 
 		private static readonly Regex dateRegex = new Regex("^(\\d+) ([à-ÿ]+) (\\d+) ã.$");
@@ -29,7 +29,7 @@ namespace OneNoteHelper
 
 		public List<Record> Records { get; set; }
 
-		private bool isTest = true;
+		private bool isTest = false;
 		private void ProcessPages_OnClick(object sender, RoutedEventArgs e)
 		{
 			try
@@ -56,34 +56,39 @@ namespace OneNoteHelper
 					}
 				}
 
+				this.ListView.Visibility = Visibility.Visible;
+
 				text = text.Replace("\r\n", "\n");
 				string[] lines = text.Split('\n');
 				Dictionary<DateTime, StringBuilder> records = GetRecords(lines);
 
 				// group records by date, then by time to get united text for each day
-				this.Records = records
-				               .Group(r => r.Key.Date)
-				               .Select
-				               (
-					               g => new Record
-					               {
-									   Date = g.Key,
-									   Text = string.Join
-									   (
-										   separator: "\r\n\r\n",
-										   values: g.Group(p => p.Key.TimeOfDay)
-										            .Select
-										            (
-											            g2 => string.Join
-											            (
-												            "\r\n\r\n",
-												            g2.Select(p => $"{g2.Key}\r\n\r\n{p.Value.ToString().Trim('\r', '\n')}")
-											            )
-										            )
-									   )
-								   }
-				               )
-				               .ToList();
+				this.Records =
+					records
+						.Group(r => r.Key.Date)
+						.OrderBy(g => g.Key)
+						.Select
+						(
+							g => new Record
+							{
+								Date = g.Key,
+								Text = string.Join
+								(
+									separator: "\r\n\r\n",
+									values: g.Group(p => p.Key.TimeOfDay)
+									         .OrderBy(g2 => g2.Key)
+									         .Select
+									         (
+										         g2 => string.Join
+										         (
+											         "\r\n\r\n",
+											         g2.Select(p => $"{g2.Key.Hours:00}:{g2.Key.Minutes:00}\r\n\r\n{p.Value.ToString().Trim('\r', '\n')}")
+										         )
+									         )
+								)
+							}
+						)
+						.ToList();
 
 				this.ListView.ItemsSource = this.Records;
 			}
@@ -100,9 +105,20 @@ namespace OneNoteHelper
 			StringBuilder sb = null;
 			LinesContext context = LinesContext.NeedDate;
 			DateTime? date = null;
+			int emptyCount = 0;
 			foreach (string line in lines)
 			{
 				lineNum++;
+
+				if (line.Length == 0)
+				{
+					emptyCount++;
+				}
+				else
+				{
+					emptyCount = 0;
+				}
+
 				try
 				{
 					if (context == LinesContext.NeedTime)
@@ -142,6 +158,11 @@ namespace OneNoteHelper
 						}
 						else
 						{
+							if (emptyCount > 4)
+							{
+								throw new Exception($"To much empty lines after '{sb}'.");
+							}
+
 							if (sb.Length > 0) sb.AppendLine();
 
 							sb.Append(line);

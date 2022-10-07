@@ -24,35 +24,33 @@
 		<Style TargetType="GridViewColumnHeader">
 			<Setter Property="Template" Value="{x:Null}" />
 		</Style>
-		<DataTemplate x:Key="MyDataTemplate">
-			<Border BorderBrush="#FFFF0000" BorderThickness="1" >
-				<StackPanel Margin="6,2,6,2">
-					<TextBlock Text="{Binding}"/>
-					<TextBlock Text="{Binding}"/>
-				</StackPanel>
-			</Border>
-		</DataTemplate>
 		<Style x:Key="MyItemContainerStyle" TargetType="{x:Type ListViewItem}">
 			<Setter Property="BorderThickness" Value="0.1" />
 			<Setter Property="BorderBrush" Value="Black" />
-			<Setter Property="VerticalContentAlignment" Value="Top" />
+			<Setter Property="VerticalContentAlignment" Value="Stretch" />
 		</Style>
 	</Window.Resources>
-	<StackPanel>
-		<StackPanel Orientation="Horizontal">
+	<DockPanel>
+		<StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
 			<Button Margin="3" Padding="8,0,8,0" Click="ProcessPages_OnClick">Process pages in clipboard</Button>
 		</StackPanel>
 
-		<!--<ListView x:Name="ListView" ItemsSource="{Binding Records}">-->
 		<ListView x:Name="ListView" Margin="3"
 		          ItemsSource="{StaticResource TestSource}" 
 		          ItemContainerStyle="{DynamicResource MyItemContainerStyle}">
-			<ListView.View>
+			<ListView.Template>
+				<ControlTemplate>
+					<ScrollViewer>
+						<ItemsPresenter />
+					</ScrollViewer>
+				</ControlTemplate>
+			</ListView.Template>
+				<ListView.View>
 				<GridView>
-					<GridViewColumn DisplayMemberBinding="{Binding Date, StringFormat=dd.MM.yyyy}" CellTemplate="{StaticResource MyDataTemplate}" />
-					<GridViewColumn DisplayMemberBinding="{Binding Text}" CellTemplate="{StaticResource MyDataTemplate}" />
+					<GridViewColumn DisplayMemberBinding="{Binding Date, StringFormat=dd.MM.yyyy}" />
+					<GridViewColumn DisplayMemberBinding="{Binding Text}" />
 				</GridView>
 			</ListView.View>
 		</ListView>
-	</StackPanel>
+	</DockPanel>
 </Window>
