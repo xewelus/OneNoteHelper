@@ -1,14 +1,9 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Xml;
-using System.Xml.Linq;
 using Common;
 using Common.Classes.Diagnostic;
 using CommonWpf;
@@ -26,6 +21,8 @@ namespace OneNoteHelper
 		{
 			this.InitializeComponent();
 
+			this.SaveResultButton.Visibility = Visibility.Hidden;
+
 			this.ListView.Visibility = Visibility.Hidden;
 			this.ListView.ItemsSource = null;
 		}
@@ -36,6 +33,7 @@ namespace OneNoteHelper
 		public List<Record> Records { get; set; }
 
 		private bool isTest = true;
+		private Match lastMatch;
 		private void ProcessPages_OnClick(object sender, RoutedEventArgs e)
 		{
 			try
@@ -57,45 +55,39 @@ namespace OneNoteHelper
 					}
 				}
 
-				Regex r = new Regex("([\\s\\S]*<!--StartFragment-->)([\\s\\S]*)(<!--EndFragment-->[\\s\\S]*)");
-				Match m = r.Match(text);
-				if (!m.Success)
+				Regex outerRegex = new Regex("([\\s\\S]*<!--StartFragment-->)([\\s\\S]*)(<!--EndFragment-->[\\s\\S]*)");
+				Match match = outerRegex.Match(text);
+				if (!match.Success)
 				{
 					UIHelper.ShowWarning("Invalid OneNote data in clipboard.");
 					Diag.SaveAndOpenLog(text);
+					this.lastMatch = null;
 					return;
 				}
 
-				string str1 = m.Groups[2].Value;
+				this.lastMatch = match;
+
+				string str1 = match.Groups[2].Value;
 
 				string[] blocks = Regex.Split(str1, "<p style='margin:0in'>&nbsp;</p>\r\n\r\n");
 
 				List<Record> records = GetRecords(blocks);
 
-				records.Sort(
-					(r1, r2) =>
-					{
-						int res = Comparer<bool>.Default.Compare(r1.Error == null, r2.Error == null);
-						if (res != 0) return res;
-
-						if (r1.Error == null)
-						{
-							res = Comparer<DateTime>.Default.Compare(r1.Date, r2.Date);
-							if (res != 0) return res;
-						}
-
-						return Comparer<int>.Default.Compare(r1.Index, r2.Index);
-					});
+				records.Sort(CompareRecords);
 
 				this.Records = records;
 				this.ListView.ItemsSource = this.Records;
 				this.ListView.Visibility = Visibility.Visible;
+
+				this.SaveResultButton.Visibility = Visibility.Visible;
+				this.SaveResultButton.IsEnabled = records.All(r => !r.HasError);
 			}
 			catch (Exception ex)
 			{
 				ExceptionHandler.Catch(ex);
 			}
 		}
+
 
 		private static void ProcessBlock(string block, List<Record> records)
 		{
@@ -307,6 +299,31 @@ namespace OneNoteHelper
 				seconds: 0);
 		}
 
+		private static int CompareRecords(Record r1, Record r2)
+		{
+			int res = Comparer<bool>.Default.Compare(r1.Error == null, r2.Error == null);
+			if (res != 0) return res;
+
+			if (r1.Error == null)
+			{
+				res = Comparer<DateTime>.Default.Compare(r1.Date, r2.Date);
+				if (res != 0) return res;
+			}
+
+			return Comparer<int>.Default.Compare(r1.Index, r2.Index);
+		}
+
+		private void SaveResultButton_OnClick(object sender, RoutedEventArgs e)
+		{
+			try
+			{
+				
+			}
+			catch (Exception ex)
+			{
+				ExceptionHandler.Catch(ex);
+			}
+		}
 
 		private enum LinesContext
 		{

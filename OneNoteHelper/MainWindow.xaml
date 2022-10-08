@@ -36,10 +36,11 @@
 	<DockPanel>
 		<StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
 			<Button Margin="3" Padding="8,0,8,0" Click="ProcessPages_OnClick">Process pages in clipboard</Button>
+			<Button x:Name="SaveResultButton" Width="100" HorizontalAlignment="Left" Margin="3" Click="SaveResultButton_OnClick">Save result...</Button>
 		</StackPanel>
 
 		<ListView x:Name="ListView" Margin="3"
-				  FontFamily="Courier New"
+		          FontFamily="Courier New"
 		          ItemsSource="{StaticResource TestSource}" 
 		          ItemContainerStyle="{DynamicResource MyItemContainerStyle}">
 			<ListView.Template>
@@ -49,7 +50,7 @@
 					</ScrollViewer>
 				</ControlTemplate>
 			</ListView.Template>
-				<ListView.View>
+			<ListView.View>
 				<GridView>
 					<GridViewColumn DisplayMemberBinding="{Binding Date, StringFormat=dd.MM.yyyy HH:mm}" />
 					<GridViewColumn DisplayMemberBinding="{Binding DisplayText}" />
