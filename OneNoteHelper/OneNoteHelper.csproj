@@ -14,6 +14,7 @@
 	</PropertyGroup>
 	<ItemGroup>
 	  <None Remove="changes.txt" />
+	  <None Remove="Tests\Test html.txt" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Content Include="changes.txt">
@@ -29,6 +30,9 @@
 	  <Reference Include="PresentationFramework" />
 	  <Reference Include="System.Xaml" />
 	  <Reference Include="WindowsBase" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Resource Include="Tests\Test html.txt" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Update="Tests\TestResources.Designer.cs">

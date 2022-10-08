@@ -44,7 +44,7 @@ namespace OneNoteHelper
 
 				if (this.isTest)
 				{
-					text = TestResources.TestRecords;
+					text = TestResources.Test_html;
 				}
 				else
 				{

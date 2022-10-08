@@ -80,9 +80,9 @@ namespace TestOneNote.Tests {
         ///&lt;body lang=ru style=&apos;font-family:Consolas;font-size:10.0pt&apos;&gt;
         ///&lt;!--Sta [rest of string was truncated]&quot;;.
         /// </summary>
-        internal static string TestRecords {
+        internal static string Test_html {
             get {
-                return ResourceManager.GetString("TestRecords", resourceCulture);
+                return ResourceManager.GetString("Test_html", resourceCulture);
             }
         }
     }

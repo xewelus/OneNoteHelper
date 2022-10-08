@@ -9,3 +9,4 @@ _ReSharper.Caches/
 *.suo
 /OneNoteHelper/obj/
 /OneNoteHelper/outputs/
+*.csproj.user

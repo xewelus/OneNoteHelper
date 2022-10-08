@@ -1,0 +1,169 @@
+﻿Version:1.0
+StartHTML:0000000105
+EndHTML:0000007036
+StartFragment:0000000525
+EndFragment:0000006996
+
+<html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+xmlns="http://www.w3.org/TR/REC-html40">
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=utf-8">
+<meta name=ProgId content=OneNote.File>
+<meta name=Generator content="Microsoft OneNote 15">
+</head>
+
+<body lang=ru style='font-family:Consolas;font-size:10.0pt'>
+<!--StartFragment-->
+
+<p style='margin:0in;font-family:Consolas;font-size:20.0pt' lang=x-none>&nbsp;</p>
+
+<p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'>6 октября
+2022 г.</p>
+
+<p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'>0:14</p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt'><span lang=ru>тестирование
+записей</span><span lang=en-US> 1</span></p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=x-none>строка
+1</p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=x-none>строка
+2</p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt'><span lang=x-none>длинннаааяя
+строкааааа </span><span lang=ru>длинннаааяя строкааааа длинннаааяя строкааааа
+длинннаааяя строкааааа длинннаааяя строкааааа длинннаааяя строкааааа</span></p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=x-none>&nbsp;</p>
+
+<div style='direction:ltr'>
+
+<table border=1 cellpadding=0 cellspacing=0 valign=top style='direction:ltr;
+ border-collapse:collapse;border-style:solid;border-color:#A3A3A3;border-width:
+ 1pt'>
+ <tr>
+  <td style='border-style:solid;border-color:#A3A3A3;border-width:1pt;
+  vertical-align:top;width:.6673in;padding:4pt 4pt 4pt 4pt'>
+  <p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US>t1</p>
+  </td>
+  <td style='border-style:solid;border-color:#A3A3A3;border-width:1pt;
+  vertical-align:top;width:.5548in;padding:4pt 4pt 4pt 4pt'>
+  <p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US>t2</p>
+  </td>
+ </tr>
+ <tr>
+  <td style='border-style:solid;border-color:#A3A3A3;border-width:1pt;
+  vertical-align:top;width:.6673in;padding:4pt 4pt 4pt 4pt'>
+  <p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US>t3</p>
+  </td>
+  <td style='border-style:solid;border-color:#A3A3A3;border-width:1pt;
+  vertical-align:top;width:.5548in;padding:4pt 4pt 4pt 4pt'>
+  <p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US>t4</p>
+  </td>
+ </tr>
+</table>
+
+</div>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=x-none>&nbsp;</p>
+
+<p style='margin:0in'>&nbsp;</p>
+
+<p style='margin:0in;font-family:Consolas;font-size:20.0pt' lang=x-none>&nbsp;</p>
+
+<p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'>6 октября
+2022 г.</p>
+
+<p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'>0:34</p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt'><span lang=ru>тестирование
+записей</span><span lang=en-US> 2</span></p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt'><span lang=ru>тестирование
+записписей</span><span lang=en-US> 2</span></p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt'><span lang=ru>тестирование
+записей</span><span lang=en-US> 2</span></p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt'>картинка</p>
+
+<p style='margin:0in'><img
+src="file:///C:/Users/User/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png"
+width=420 height=32></p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=x-none>конец
+картинки</p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=x-none>&nbsp;</p>
+
+<p style='margin:0in'>&nbsp;</p>
+
+<p style='margin:0in;font-family:Consolas;font-size:20.0pt' lang=x-none>&nbsp;</p>
+
+<p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'>6 октября
+2022 г.</p>
+
+<p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'>0:34</p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt'><span lang=ru>тестирование
+записей</span><span lang=en-US> 3</span></p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt'><span lang=ru>тестирование
+записей</span><span lang=en-US> 3</span></p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt'><a
+href="onenote:#!%20Программа%20для%20OneNote&amp;section-id={D6EB7BC9-315D-4D57-8D6E-3369241B8B15}&amp;page-id={20D63EFE-DE7D-4D6D-BC2F-60645D4A12FA}&amp;object-id={3A95ECE4-EBC1-4D65-B827-7837B7B53ADA}&amp;3B&amp;base-path=C:\Users\User\Documents\Записные%20книжки%20OneNote\Temp\Входящие.one">ссылка</a></p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US>&nbsp;</p>
+
+<p style='margin:0in'>&nbsp;</p>
+
+<p style='margin:0in;font-family:Consolas;font-size:20.0pt' lang=x-none>&nbsp;</p>
+
+<p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'>7 октября
+2022 г.</p>
+
+<p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'>0:40</p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt'><span lang=ru>тестирование
+записей</span><span lang=en-US> 4</span></p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt'><span lang=ru>тестирование
+записей</span><span lang=en-US> 4</span></p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US>&nbsp;</p>
+
+<p style='margin:0in'>&nbsp;</p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt'><span lang=ru>тестирование
+записей</span><span lang=en-US> 5</span></p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt'><span lang=ru>тестирование
+записей</span><span lang=en-US> 5</span></p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US>&nbsp;</p>
+
+<p style='margin:0in'>&nbsp;</p>
+
+<p style='margin:0in;font-family:Consolas;font-size:20.0pt' lang=x-none>&nbsp;</p>
+
+<p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'>7 октября
+2022 г.</p>
+
+<p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'>20:46</p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt'><span lang=ru>тестирование
+записей</span><span lang=en-US> 6</span></p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt'><span lang=ru>тестирование
+записей</span><span lang=en-US> 6</span></p>
+
+<p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US>&nbsp;</p>
+
+<!--EndFragment-->
+</body>
+
+</html>
