@@ -27,12 +27,13 @@ namespace OneNoteHelper
 			this.ListView.ItemsSource = null;
 		}
 
+		private static readonly Regex emptyRegex = new Regex("<p style='margin:0in;[\\s\\S-[\\r\\n]]*?>&nbsp;</p>");
 		private static readonly Regex dateRegex = new Regex("<p style='[\\s\\S-[\\r\\n]]*?>(\\d+)\\s+(\\w+)\\s+(\\d+)\\s+ã.</p>");
 		private static readonly Regex timeRegex = new Regex("<p style='[\\s\\S-[\\r\\n]]*?>(\\d+):(\\d+)</p>");
 
 		public List<Record> Records { get; set; }
 
-		private bool isTest = true;
+		private bool isTest = false;
 		private Match lastMatch;
 		private void ProcessPages_OnClick(object sender, RoutedEventArgs e)
 		{
@@ -110,6 +111,7 @@ namespace OneNoteHelper
 			string[] lines = block.Replace("\r\n", "\n").Split('\n');
 
 			StringBuilder sb = new StringBuilder();
+			StringBuilder tailSb = new StringBuilder();
 			LinesContext context = LinesContext.NeedDate;
 			DateTime? date = null;
 
@@ -167,17 +169,26 @@ namespace OneNoteHelper
 					if (context == LinesContext.NeedText)
 					{
 						if (sb == null) throw new NullReferenceException(nameof(sb));
-						if (sb.Length > 0) sb.AppendLine();
-						sb.Append(line);
-						continue;
+
+						if (line.Length == 0 || emptyRegex.IsMatch(line))
+						{
+							tailSb.AppendLine(line);
+						}
+						else
+						{
+							if (tailSb.Length > 0)
+							{
+								sb.Append(tailSb);
+								tailSb.Clear();
+							}
+
+							sb.AppendLine(line);
+							continue;
+						}
 					}
 
 					if (string.IsNullOrEmpty(line)) continue;
-
-					if (Regex.IsMatch(line, "<p style='margin:0in;[\\s\\S-[\\r\\n]]*?>&nbsp;</p>"))
-					{
-						continue;
-					}
+					if (emptyRegex.IsMatch(line)) continue;
 
 					Match match = dateRegex.Match(line);
 					if (!match.Success)
