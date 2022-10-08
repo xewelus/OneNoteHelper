@@ -55,7 +55,7 @@ namespace OneNoteHelper
 					}
 				}
 
-				Regex outerRegex = new Regex("([\\s\\S]*<!--StartFragment-->)([\\s\\S]*)(<!--EndFragment-->[\\s\\S]*)");
+				Regex outerRegex = new Regex("([\\s\\S]*)(<html[\\s\\S]*<!--StartFragment-->)([\\s\\S]*)(<!--EndFragment-->[\\s\\S]*)");
 				Match match = outerRegex.Match(text);
 				if (!match.Success)
 				{
@@ -67,7 +67,7 @@ namespace OneNoteHelper
 
 				this.lastMatch = match;
 
-				string str1 = match.Groups[2].Value;
+				string str1 = match.Groups[3].Value;
 
 				string[] blocks = Regex.Split(str1, "<p style='margin:0in'>&nbsp;</p>\r\n\r\n");
 
@@ -80,7 +80,7 @@ namespace OneNoteHelper
 				this.ListView.Visibility = Visibility.Visible;
 
 				this.SaveResultButton.Visibility = Visibility.Visible;
-				this.SaveResultButton.IsEnabled = records.All(r => !r.HasError);
+				this.SaveResultButton.IsEnabled = records.Any(r => !r.HasError);
 			}
 			catch (Exception ex)
 			{
@@ -88,6 +88,22 @@ namespace OneNoteHelper
 			}
 		}
 
+		private static List<Record> GetRecords(string[] blocks)
+		{
+			List<Record> records = new List<Record>();
+			foreach (string block in blocks)
+			{
+				try
+				{
+					ProcessBlock(block, records);
+				}
+				catch (Exception ex)
+				{
+					throw new Exception($"Error while processing block '{block}'.", ex);
+				}
+			}
+			return records;
+		}
 
 		private static void ProcessBlock(string block, List<Record> records)
 		{
@@ -168,7 +184,9 @@ namespace OneNoteHelper
 					{
 						throw new Exception("Date not found.");
 					}
-					date = GetDay(match);
+
+					(date, record.DateString) = GetDay(match);
+
 					context = LinesContext.NeedTime;
 				}
 				catch (Exception ex)
@@ -184,24 +202,7 @@ namespace OneNoteHelper
 			}
 		}
 
-		private static List<Record> GetRecords(string[] blocks)
-		{
-			List<Record> records = new List<Record>();
-			foreach (string block in blocks)
-			{
-				try
-				{
-					ProcessBlock(block, records);
-				}
-				catch (Exception ex)
-				{
-					throw new Exception($"Error while processing block '{block}'.", ex);
-				}
-			}
-			return records;
-		}
-
-		private static DateTime GetDay(Match match)
+		private static (DateTime Date, string DateString) GetDay(Match match)
 		{
 			string s1 = match.Groups[1].Value;
 			int day;
@@ -238,7 +239,7 @@ namespace OneNoteHelper
 				throw new Exception($"Error parsing year '{s3}'.", ex);
 			}
 
-			return new DateTime(year, month, day);
+			return (new DateTime(year, month, day), $"{s1} {s2} {s3} ã.");
 		}
 
 		private static readonly string[] months = 
@@ -317,7 +318,42 @@ namespace OneNoteHelper
 		{
 			try
 			{
-				
+				int errorsCount = this.Records.Select(r => r.HasError).Count();
+				if (errorsCount > 0)
+				{
+					if (!UIHelper.AskYesNo($"Results contains some errors ({errorsCount}). Continue?"))
+					{
+						return;
+					}
+				}
+
+				StringBuilder sb = new StringBuilder();
+
+				// beginning part
+				sb.AppendLine(this.lastMatch.Groups[2].Value);
+
+				sb.AppendLine("<table border=1 cellpadding=0 cellspacing=0 valign=top>");
+				foreach (Record record in this.Records)
+				{
+					if (record.HasError) continue;
+
+					sb.AppendLine("<tr>");
+					sb.AppendLine("<td>");
+					sb.AppendLine($"<p style='margin:0in;font-family:Consolas;font-size:10.0pt'>{record.DateString}</p>");
+					sb.AppendLine($"<p style='margin:0in;font-family:Consolas;font-size:10.0pt'>{record.Date:HH:mm}</p>");
+					sb.AppendLine("<p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=x-none>&nbsp;</p>");
+					sb.AppendLine(record.Text);
+					sb.AppendLine("</td>");
+					sb.AppendLine("<td>");
+					sb.AppendLine("</td>");
+					sb.AppendLine("</tr>");
+				}
+				sb.AppendLine("</table>");
+
+				// ending part
+				sb.AppendLine(this.lastMatch.Groups[4].Value);
+
+				Diag.SaveAndOpenLog(sb.ToString(), "result_", ".html");
 			}
 			catch (Exception ex)
 			{

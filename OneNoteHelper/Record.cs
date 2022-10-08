@@ -7,6 +7,7 @@ public class Record : DependencyObject
 {
 	public int Index { get; set; }
 	public DateTime Date { get; set; }
+	public string DateString { get; set; }
 	public string Text { get; set; }
 	public string Block { get; set; }
 	public Exception Error { get; set; }
