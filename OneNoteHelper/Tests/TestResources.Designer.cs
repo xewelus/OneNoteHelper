@@ -61,40 +61,24 @@ namespace TestOneNote.Tests {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to 6 октября 2022 г.
-        ///0:14
+        ///   Looks up a localized string similar to Version:1.0
+        ///StartHTML:0000000105
+        ///EndHTML:0000007036
+        ///StartFragment:0000000525
+        ///EndFragment:0000006996
         ///
-        ///тестирование записей 1
-        ///строка 1
-        ///строка 2
-        ///длинннаааяя строкааааа длинннаааяя строкааааа длинннаааяя строкааааа длинннаааяя строкааааа длинннаааяя строкааааа длинннаааяя строкааааа
+        ///&lt;html xmlns:o=&quot;urn:schemas-microsoft-com:office:office&quot;
+        ///xmlns:dt=&quot;uuid:C2F41010-65B3-11d1-A29F-00AA00C14882&quot;
+        ///xmlns=&quot;http://www.w3.org/TR/REC-html40&quot;&gt;
         ///
+        ///&lt;head&gt;
+        ///&lt;meta http-equiv=Content-Type content=&quot;text/html; charset=utf-8&quot;&gt;
+        ///&lt;meta name=ProgId content=OneNote.File&gt;
+        ///&lt;meta name=Generator content=&quot;Microsoft OneNote 15&quot;&gt;
+        ///&lt;/head&gt;
         ///
-        ///
-        ///6 октября 2022 г.
-        ///0:34
-        ///
-        ///тестирование записей 2
-        ///тестирование записписей 2
-        ///тестирование записей 2
-        ///
-        ///
-        ///
-        ///
-        ///6 октября 2022 г.
-        ///0:34
-        ///
-        ///тестирование записей 3
-        ///тестирование записей 3
-        ///
-        ///
-        ///
-        ///
-        ///7 октября 2022 г.
-        ///0:40
-        ///
-        ///тестирование записей 4
-        ///тестирование записей 4.
+        ///&lt;body lang=ru style=&apos;font-family:Consolas;font-size:10.0pt&apos;&gt;
+        ///&lt;!--Sta [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string TestRecords {
             get {

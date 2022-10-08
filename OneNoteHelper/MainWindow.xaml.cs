@@ -1,10 +1,16 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
+using System.Xml;
+using System.Xml.Linq;
 using Common;
+using Common.Classes.Diagnostic;
 using CommonWpf;
 using CommonWpf.Classes.UI;
 using TestOneNote.Tests;
@@ -24,12 +30,12 @@ namespace OneNoteHelper
 			this.ListView.ItemsSource = null;
 		}
 
-		private static readonly Regex dateRegex = new Regex("^(\\d+) ([à-ÿ]+) (\\d+) ã.$");
-		private static readonly Regex timeRegex = new Regex("^(\\d+):(\\d+)$");
+		private static readonly Regex dateRegex = new Regex("<p style='[\\s\\S-[\\r\\n]]*?>(\\d+)\\s+(\\w+)\\s+(\\d+)\\s+ã.</p>");
+		private static readonly Regex timeRegex = new Regex("<p style='[\\s\\S-[\\r\\n]]*?>(\\d+):(\\d+)</p>");
 
 		public List<Record> Records { get; set; }
 
-		private bool isTest = false;
+		private bool isTest = true;
 		private void ProcessPages_OnClick(object sender, RoutedEventArgs e)
 		{
 			try
@@ -42,55 +48,48 @@ namespace OneNoteHelper
 				}
 				else
 				{
-					text = Clipboard.GetText();
-					if (string.IsNullOrEmpty(text))
-					{
-						UIHelper.ShowWarning("Clipboard is empty.");
-						return;
-					}
+					text = Clipboard.GetData("HTML Format") as string;
 
-					if (!Clipboard.ContainsData("OneNote 2010 Internal"))
+					if (string.IsNullOrEmpty(text))
 					{
 						UIHelper.ShowWarning("No OneNote data in clipboard.");
 						return;
 					}
 				}
 
-				this.ListView.Visibility = Visibility.Visible;
+				Regex r = new Regex("([\\s\\S]*<!--StartFragment-->)([\\s\\S]*)(<!--EndFragment-->[\\s\\S]*)");
+				Match m = r.Match(text);
+				if (!m.Success)
+				{
+					UIHelper.ShowWarning("Invalid OneNote data in clipboard.");
+					Diag.SaveAndOpenLog(text);
+					return;
+				}
 
-				text = text.Replace("\r\n", "\n");
-				string[] lines = text.Split('\n');
-				Dictionary<DateTime, StringBuilder> records = GetRecords(lines);
+				string str1 = m.Groups[2].Value;
 
-				// group records by date, then by time to get united text for each day
-				this.Records =
-					records
-						.Group(r => r.Key.Date)
-						.OrderBy(g => g.Key)
-						.Select
-						(
-							g => new Record
-							{
-								Date = g.Key,
-								Text = string.Join
-								(
-									separator: "\r\n\r\n",
-									values: g.Group(p => p.Key.TimeOfDay)
-									         .OrderBy(g2 => g2.Key)
-									         .Select
-									         (
-										         g2 => string.Join
-										         (
-											         "\r\n\r\n",
-											         g2.Select(p => $"{g2.Key.Hours:00}:{g2.Key.Minutes:00}\r\n\r\n{p.Value.ToString().Trim('\r', '\n')}")
-										         )
-									         )
-								)
-							}
-						)
-						.ToList();
+				string[] blocks = Regex.Split(str1, "<p style='margin:0in'>&nbsp;</p>\r\n\r\n");
 
+				List<Record> records = GetRecords(blocks);
+
+				records.Sort(
+					(r1, r2) =>
+					{
+						int res = Comparer<bool>.Default.Compare(r1.Error == null, r2.Error == null);
+						if (res != 0) return res;
+
+						if (r1.Error == null)
+						{
+							res = Comparer<DateTime>.Default.Compare(r1.Date, r2.Date);
+							if (res != 0) return res;
+						}
+
+						return Comparer<int>.Default.Compare(r1.Index, r2.Index);
+					});
+
+				this.Records = records;
 				this.ListView.ItemsSource = this.Records;
+				this.ListView.Visibility = Visibility.Visible;
 			}
 			catch (Exception ex)
 			{
@@ -98,31 +97,42 @@ namespace OneNoteHelper
 			}
 		}
 
-		private static Dictionary<DateTime, StringBuilder> GetRecords(string[] lines)
+		private static void ProcessBlock(string block, List<Record> records)
 		{
-			Dictionary<DateTime, StringBuilder> records = new Dictionary<DateTime, StringBuilder>();
-			int lineNum = 0;
-			StringBuilder sb = null;
+			string[] lines = block.Replace("\r\n", "\n").Split('\n');
+
+			StringBuilder sb = new StringBuilder();
 			LinesContext context = LinesContext.NeedDate;
 			DateTime? date = null;
-			int emptyCount = 0;
-			foreach (string line in lines)
-			{
-				lineNum++;
 
-				if (line.Length == 0)
+			Record record = new Record();
+			records.Add(record);
+			record.Index = records.Count;
+			record.Block = block;
+
+			for (int lineNum = 0; lineNum < lines.Length; lineNum++)
+			{
+				string line = lines[lineNum];
+
+				if (line.StartsWith("<p "))
 				{
-					emptyCount++;
-				}
-				else
-				{
-					emptyCount = 0;
+					// append all lines until empty because of line wrapping
+					while (lineNum < lines.Length - 1)
+					{
+						string nextLine = lines[lineNum + 1];
+						if (nextLine.Length == 0) break;
+
+						line = $"{line} {nextLine}";
+						lineNum++;
+					}
 				}
 
 				try
 				{
 					if (context == LinesContext.NeedTime)
 					{
+						if (line.Length == 0) continue;
+
 						if (date == null) throw new NullReferenceException(nameof(date));
 
 						Match timeMatch = timeRegex.Match(line);
@@ -134,7 +144,7 @@ namespace OneNoteHelper
 						TimeSpan time = GetTime(timeMatch);
 						date = date.Value.Add(time);
 
-						sb = records.GetOrCreate(date.Value);
+						record.Date = date.Value;
 
 						// remove empty lines after previous parsing
 						while (sb.Length > 0 && sb[sb.Length - 1].In('\r', '\n'))
@@ -149,42 +159,51 @@ namespace OneNoteHelper
 					if (context == LinesContext.NeedText)
 					{
 						if (sb == null) throw new NullReferenceException(nameof(sb));
-
-						Match dateMatch = dateRegex.Match(line);
-						if (dateMatch.Success)
-						{
-							context = LinesContext.NeedDate;
-							sb = null;
-						}
-						else
-						{
-							if (emptyCount > 4)
-							{
-								throw new Exception($"To much empty lines after '{sb}'.");
-							}
-
-							if (sb.Length > 0) sb.AppendLine();
-
-							sb.Append(line);
-							continue;
-						}
+						if (sb.Length > 0) sb.AppendLine();
+						sb.Append(line);
+						continue;
 					}
 
 					if (string.IsNullOrEmpty(line)) continue;
+
+					if (Regex.IsMatch(line, "<p style='margin:0in;[\\s\\S-[\\r\\n]]*?>&nbsp;</p>"))
+					{
+						continue;
+					}
 
 					Match match = dateRegex.Match(line);
 					if (!match.Success)
 					{
 						throw new Exception("Date not found.");
 					}
-
 					date = GetDay(match);
-
 					context = LinesContext.NeedTime;
 				}
 				catch (Exception ex)
 				{
-					throw new Exception($"Error while processing line #{lineNum}: {line}", ex);
+					record.Error = new Exception($"Error while processing line #{lineNum}: {line}", ex);
+					break;
+				}
+			}
+
+			if (sb.Length > 0)
+			{
+				record.Text = sb.ToString();
+			}
+		}
+
+		private static List<Record> GetRecords(string[] blocks)
+		{
+			List<Record> records = new List<Record>();
+			foreach (string block in blocks)
+			{
+				try
+				{
+					ProcessBlock(block, records);
+				}
+				catch (Exception ex)
+				{
+					throw new Exception($"Error while processing block '{block}'.", ex);
 				}
 			}
 			return records;

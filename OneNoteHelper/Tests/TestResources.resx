@@ -118,39 +118,174 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="TestRecords" xml:space="preserve">
-    <value>6 октября 2022 г.
-0:14
+    <value>Version:1.0
+StartHTML:0000000105
+EndHTML:0000007036
+StartFragment:0000000525
+EndFragment:0000006996
 
-тестирование записей 1
-строка 1
-строка 2
-длинннаааяя строкааааа длинннаааяя строкааааа длинннаааяя строкааааа длинннаааяя строкааааа длинннаааяя строкааааа длинннаааяя строкааааа
+&lt;html xmlns:o="urn:schemas-microsoft-com:office:office"
+xmlns:dt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882"
+xmlns="http://www.w3.org/TR/REC-html40"&gt;
 
+&lt;head&gt;
+&lt;meta http-equiv=Content-Type content="text/html; charset=utf-8"&gt;
+&lt;meta name=ProgId content=OneNote.File&gt;
+&lt;meta name=Generator content="Microsoft OneNote 15"&gt;
+&lt;/head&gt;
 
+&lt;body lang=ru style='font-family:Consolas;font-size:10.0pt'&gt;
+&lt;!--StartFragment--&gt;
 
-6 октября 2022 г.
-0:34
+&lt;p style='margin:0in;font-family:Consolas;font-size:20.0pt' lang=x-none&gt;&amp;nbsp;&lt;/p&gt;
 
-тестирование записей 2
-тестирование записписей 2
-тестирование записей 2
+&lt;p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'&gt;6 октября
+2022 г.&lt;/p&gt;
 
+&lt;p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'&gt;0:14&lt;/p&gt;
 
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt'&gt;&lt;span lang=ru&gt;тестирование
+записей&lt;/span&gt;&lt;span lang=en-US&gt; 1&lt;/span&gt;&lt;/p&gt;
 
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=x-none&gt;строка
+1&lt;/p&gt;
 
-6 октября 2022 г.
-0:34
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=x-none&gt;строка
+2&lt;/p&gt;
 
-тестирование записей 3
-тестирование записей 3
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt'&gt;&lt;span lang=x-none&gt;длинннаааяя
+строкааааа &lt;/span&gt;&lt;span lang=ru&gt;длинннаааяя строкааааа длинннаааяя строкааааа
+длинннаааяя строкааааа длинннаааяя строкааааа длинннаааяя строкааааа&lt;/span&gt;&lt;/p&gt;
 
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=x-none&gt;&amp;nbsp;&lt;/p&gt;
 
+&lt;div style='direction:ltr'&gt;
 
+&lt;table border=1 cellpadding=0 cellspacing=0 valign=top style='direction:ltr;
+ border-collapse:collapse;border-style:solid;border-color:#A3A3A3;border-width:
+ 1pt'&gt;
+ &lt;tr&gt;
+  &lt;td style='border-style:solid;border-color:#A3A3A3;border-width:1pt;
+  vertical-align:top;width:.6673in;padding:4pt 4pt 4pt 4pt'&gt;
+  &lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US&gt;t1&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style='border-style:solid;border-color:#A3A3A3;border-width:1pt;
+  vertical-align:top;width:.5548in;padding:4pt 4pt 4pt 4pt'&gt;
+  &lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US&gt;t2&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+ &lt;tr&gt;
+  &lt;td style='border-style:solid;border-color:#A3A3A3;border-width:1pt;
+  vertical-align:top;width:.6673in;padding:4pt 4pt 4pt 4pt'&gt;
+  &lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US&gt;t3&lt;/p&gt;
+  &lt;/td&gt;
+  &lt;td style='border-style:solid;border-color:#A3A3A3;border-width:1pt;
+  vertical-align:top;width:.5548in;padding:4pt 4pt 4pt 4pt'&gt;
+  &lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US&gt;t4&lt;/p&gt;
+  &lt;/td&gt;
+ &lt;/tr&gt;
+&lt;/table&gt;
 
-7 октября 2022 г.
-0:40
+&lt;/div&gt;
 
-тестирование записей 4
-тестирование записей 4</value>
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=x-none&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p style='margin:0in'&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:20.0pt' lang=x-none&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'&gt;6 октября
+2022 г.&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'&gt;0:34&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt'&gt;&lt;span lang=ru&gt;тестирование
+записей&lt;/span&gt;&lt;span lang=en-US&gt; 2&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt'&gt;&lt;span lang=ru&gt;тестирование
+записписей&lt;/span&gt;&lt;span lang=en-US&gt; 2&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt'&gt;&lt;span lang=ru&gt;тестирование
+записей&lt;/span&gt;&lt;span lang=en-US&gt; 2&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt'&gt;картинка&lt;/p&gt;
+
+&lt;p style='margin:0in'&gt;&lt;img
+src="file:///C:/Users/User/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png"
+width=420 height=32&gt;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=x-none&gt;конец
+картинки&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=x-none&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p style='margin:0in'&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:20.0pt' lang=x-none&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'&gt;6 октября
+2022 г.&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'&gt;0:34&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt'&gt;&lt;span lang=ru&gt;тестирование
+записей&lt;/span&gt;&lt;span lang=en-US&gt; 3&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt'&gt;&lt;span lang=ru&gt;тестирование
+записей&lt;/span&gt;&lt;span lang=en-US&gt; 3&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt'&gt;&lt;a
+href="onenote:#!%20Программа%20для%20OneNote&amp;amp;section-id={D6EB7BC9-315D-4D57-8D6E-3369241B8B15}&amp;amp;page-id={20D63EFE-DE7D-4D6D-BC2F-60645D4A12FA}&amp;amp;object-id={3A95ECE4-EBC1-4D65-B827-7837B7B53ADA}&amp;amp;3B&amp;amp;base-path=C:\Users\User\Documents\Записные%20книжки%20OneNote\Temp\Входящие.one"&gt;ссылка&lt;/a&gt;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p style='margin:0in'&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:20.0pt' lang=x-none&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'&gt;7 октября
+2022 г.&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'&gt;0:40&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt'&gt;&lt;span lang=ru&gt;тестирование
+записей&lt;/span&gt;&lt;span lang=en-US&gt; 4&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt'&gt;&lt;span lang=ru&gt;тестирование
+записей&lt;/span&gt;&lt;span lang=en-US&gt; 4&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p style='margin:0in'&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt'&gt;&lt;span lang=ru&gt;тестирование
+записей&lt;/span&gt;&lt;span lang=en-US&gt; 5&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt'&gt;&lt;span lang=ru&gt;тестирование
+записей&lt;/span&gt;&lt;span lang=en-US&gt; 5&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p style='margin:0in'&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:20.0pt' lang=x-none&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'&gt;7 октября
+2022 г.&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Calibri;font-size:10.0pt;color:gray'&gt;20:46&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt'&gt;&lt;span lang=ru&gt;тестирование
+записей&lt;/span&gt;&lt;span lang=en-US&gt; 6&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt'&gt;&lt;span lang=ru&gt;тестирование
+записей&lt;/span&gt;&lt;span lang=en-US&gt; 6&lt;/span&gt;&lt;/p&gt;
+
+&lt;p style='margin:0in;font-family:Consolas;font-size:10.0pt' lang=en-US&gt;&amp;nbsp;&lt;/p&gt;
+
+&lt;!--EndFragment--&gt;
+&lt;/body&gt;
+
+&lt;/html&gt;</value>
   </data>
 </root>

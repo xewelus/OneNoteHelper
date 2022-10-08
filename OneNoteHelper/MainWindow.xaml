@@ -4,8 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:OneNoteHelper"
-        xmlns:generic="clr-namespace:System.Collections.Generic;assembly=mscorlib"
-        xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="OneNote Helper" 
         Height="500" Width="700"
@@ -24,7 +22,12 @@
 		<Style TargetType="GridViewColumnHeader">
 			<Setter Property="Template" Value="{x:Null}" />
 		</Style>
-		<Style x:Key="MyItemContainerStyle" TargetType="{x:Type ListViewItem}">
+		<Style x:Key="MyItemContainerStyle" TargetType="{x:Type ListViewItem}" >
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding HasError}" Value="True">
+					<Setter Property="Foreground" Value="Red" />
+				</DataTrigger>
+			</Style.Triggers>
 			<Setter Property="BorderThickness" Value="0.1" />
 			<Setter Property="BorderBrush" Value="Black" />
 			<Setter Property="VerticalContentAlignment" Value="Stretch" />
@@ -36,6 +39,7 @@
 		</StackPanel>
 
 		<ListView x:Name="ListView" Margin="3"
+				  FontFamily="Courier New"
 		          ItemsSource="{StaticResource TestSource}" 
 		          ItemContainerStyle="{DynamicResource MyItemContainerStyle}">
 			<ListView.Template>
@@ -47,8 +51,8 @@
 			</ListView.Template>
 				<ListView.View>
 				<GridView>
-					<GridViewColumn DisplayMemberBinding="{Binding Date, StringFormat=dd.MM.yyyy}" />
-					<GridViewColumn DisplayMemberBinding="{Binding Text}" />
+					<GridViewColumn DisplayMemberBinding="{Binding Date, StringFormat=dd.MM.yyyy HH:mm}" />
+					<GridViewColumn DisplayMemberBinding="{Binding DisplayText}" />
 				</GridView>
 			</ListView.View>
 		</ListView>
