@@ -1,11 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows;
-using System.Windows.Media.Animation;
 using Common;
 using Common.Classes.Diagnostic;
 using CommonWpf;
@@ -726,13 +724,6 @@ namespace OneNoteHelper
 			{
 				ExceptionHandler.Catch(ex);
 			}
-		}
-
-		private enum LinesContext
-		{
-			Default,
-			NeedTime,
-			NeedText
 		}
 
 		private class PartInfo

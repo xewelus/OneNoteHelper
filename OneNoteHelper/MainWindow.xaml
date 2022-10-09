@@ -14,7 +14,7 @@
 		<x:Array x:Key="TestSource" Type="{x:Type local:Record}">
 			<local:Record>
 				<local:Record.Date>11.01.2131</local:Record.Date>
-				<local:Record.Text>Testtttttttttttttttttttttttttttttttttttttttttttttt&#10;Testtttttttttttttttttttttttttttttttttttttttttttttt</local:Record.Text>
+				<local:Record.Text>Test</local:Record.Text>
 			</local:Record>
 			<local:Record />
 			<local:Record />
