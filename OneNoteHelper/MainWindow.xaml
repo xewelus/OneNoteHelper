@@ -39,23 +39,31 @@
 			<Button x:Name="SaveResultButton" Width="100" HorizontalAlignment="Left" Margin="3" Click="SaveResultButton_OnClick">Save result...</Button>
 		</StackPanel>
 
-		<ListView x:Name="ListView" Margin="3"
-		          FontFamily="Courier New"
-		          ItemsSource="{StaticResource TestSource}" 
-		          ItemContainerStyle="{DynamicResource MyItemContainerStyle}">
-			<ListView.Template>
-				<ControlTemplate>
-					<ScrollViewer>
-						<ItemsPresenter />
-					</ScrollViewer>
-				</ControlTemplate>
-			</ListView.Template>
-			<ListView.View>
-				<GridView>
-					<GridViewColumn DisplayMemberBinding="{Binding Date, StringFormat=dd.MM.yyyy HH:mm}" />
-					<GridViewColumn DisplayMemberBinding="{Binding DisplayText}" />
-				</GridView>
-			</ListView.View>
-		</ListView>
+		<TabControl>
+			<TabItem Header="Records list">
+				<ListView x:Name="ListView" Margin="3"
+				          FontFamily="Courier New"
+				          ItemsSource="{StaticResource TestSource}" 
+				          ItemContainerStyle="{DynamicResource MyItemContainerStyle}">
+					<ListView.Template>
+						<ControlTemplate>
+							<ScrollViewer>
+								<ItemsPresenter />
+							</ScrollViewer>
+						</ControlTemplate>
+					</ListView.Template>
+					<ListView.View>
+						<GridView>
+							<GridViewColumn DisplayMemberBinding="{Binding Date, StringFormat=dd.MM.yyyy HH:mm}" />
+							<GridViewColumn DisplayMemberBinding="{Binding DisplayText}" />
+						</GridView>
+					</ListView.View>
+				</ListView>
+			</TabItem>
+			<TabItem Header="Clipboard">
+				<TextBox x:Name="ClipboardTextBox" FontFamily="Courier New" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" />
+			</TabItem>
+		</TabControl>
+		
 	</DockPanel>
 </Window>

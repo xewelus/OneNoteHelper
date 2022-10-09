@@ -1,9 +1,8 @@
 using System;
-using System.Windows;
 
 namespace OneNoteHelper;
 
-public class Record : DependencyObject
+public class Record
 {
 	public int Index { get; set; }
 	public DateTime Date { get; set; }
@@ -16,7 +15,7 @@ public class Record : DependencyObject
 	{
 		get
 		{
-			return Error != null;
+			return this.Error != null;
 		}
 	}
 
@@ -31,5 +30,10 @@ public class Record : DependencyObject
 
 			return $"{this.Error}\r\n\r\n{this.Block}";
 		}
+	}
+
+	public override string ToString()
+	{
+		return $"Record #{this.Index} {this.Date:dd.MM.yyyy HH:mm} {this.Error} {this.Text}";
 	}
 }
